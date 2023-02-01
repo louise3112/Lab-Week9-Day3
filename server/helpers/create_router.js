@@ -16,4 +16,8 @@ const createRouter = function(collection) {
                 response.json({status:500, error:error})
             })
     })
+
+    return router
 }
+
+module.exports = createRouter
