@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import BookingList from "../components/BookingList";
 import { getBookings } from "../components/BookingFetches";
+import BookingForm from "../components/BookingForm";
 
 const BookingBox = () => {
 
@@ -13,10 +14,15 @@ const BookingBox = () => {
             }) 
     }, [])
 
+    const addBooking = (booking) => {
+        setListOfBookings([...listOfBookings, booking])
+    } 
+
 
 
     return(
         <>
+            <BookingForm addBooking={addBooking}/>
             <BookingList
             listOfBookings={listOfBookings}/>
         </>

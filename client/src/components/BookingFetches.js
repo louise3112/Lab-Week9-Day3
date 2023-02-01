@@ -6,3 +6,15 @@ export const getBookings = () => {
             .then(response => response.json())
     )
 }
+
+
+export const postBooking = (payload) => {
+    return (
+        fetch (baseUrl, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+    )
+}

@@ -1,7 +1,7 @@
 const BookingItem = ({booking}) => {
 
     const bookingStatus = () => {
-        if (booking.status){
+        if (booking.checkedin){
             return(
                 "Checked-in"
             )
