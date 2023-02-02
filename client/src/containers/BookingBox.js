@@ -18,13 +18,15 @@ const BookingBox = () => {
         setListOfBookings([...listOfBookings, booking])
     } 
 
-
+    const removeBookingFromList = (id) => {
+        const bookingsToKeep = listOfBookings.filter(booking => booking._id !== id)
+        setListOfBookings(bookingsToKeep)
+    }
 
     return(
         <>
             <BookingForm addBooking={addBooking}/>
-            <BookingList
-            listOfBookings={listOfBookings}/>
+            <BookingList listOfBookings={listOfBookings} removeBookingFromList={removeBookingFromList}/>
         </>
     )
 }

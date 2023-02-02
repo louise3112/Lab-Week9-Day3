@@ -21,6 +21,22 @@ const createRouter = function(collection) {
         const newData = request.body
         collection.insertOne(newData)
             .then(result => response.json(result.insertedId))
+            .catch(err => {
+                console.error(err)
+                response.status(500)
+                response.json({status: 500, error: err})
+            })
+    })
+
+    router.delete('/:id', (request, response) => {
+        const idToDelete = request.params.id
+        collection.deleteOne({_id: new ObjectId(idToDelete)})
+            .then(result => response.json(result))
+            .catch(err => {
+                console.error(err)
+                response.status(500)
+                response.json({status: 500, error: err})
+            })
     })
 
     return router

@@ -1,16 +1,18 @@
-const BookingItem = ({booking}) => {
+import { deleteBooking } from "./BookingFetches"
+
+const BookingItem = ({booking, removeBookingFromList}) => {
 
     const bookingStatus = () => {
         if (booking.checkedin){
-            return(
-                "Checked-in"
-            )
+            return "Checked-in"
+        } else {
+            return "Not checked-in"
         }
-        else {
-            return(
-                "Not checked-in"
-            )
-        }
+    }
+
+    const handleDelete = () => {
+        deleteBooking(booking._id)
+            .then(removeBookingFromList(booking._id))
     }
 
     return(
@@ -18,6 +20,7 @@ const BookingItem = ({booking}) => {
             <p>Name: {booking.name}</p>
             <p>Email: {booking.email}</p>
             <p>Booking Status: {bookingStatus()}</p>
+            <button onClick={handleDelete}>Delete Booking</button>
         </li>
     )
 }
